@@ -3,7 +3,7 @@
 // ============================================================
 
 // >>> Ajuste este endereço para o do seu servidor quando publicar online <<<
-const API_URL = 'https://fino-sabor-encomendas.onrender.com/api';
+const API_URL = '/api';
 
 const ESTADOS = [
   { valor: 'aguardando_pagamento', label: 'Aguardando Pagamento', icon: 'fa-clock' },
