@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#e20074">
+<title>Painel de Encomendas | Fino Sabor</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          magenta: '#e20074',
+          'magenta-dark': '#b8005d',
+          'magenta-light': '#fff0f6',
+          'magenta-soft': '#fce4ec',
+          gold: '#c5a059'
+        },
+        fontFamily: { sans: ['Plus Jakarta Sans', 'sans-serif'] }
+      }
+    }
+  }
+</script>
+<link rel="stylesheet" href="painel.css">
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased">
+
+  <!-- Região para leitores de ecrã anunciarem avisos importantes -->
+  <div id="regiao-anuncios" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- ===================== ECRÃ DE LOGIN ===================== -->
+  <div id="tela-login" class="min-h-screen flex items-center justify-center px-4">
+    <div class="bg-white w-full max-w-sm rounded-2xl shadow-xl p-8 border border-magenta-soft">
+      <div class="text-center mb-6">
+        <div class="w-14 h-14 rounded-full bg-magenta-light flex items-center justify-center mx-auto mb-3">
+          <i class="fa-solid fa-lock text-magenta text-xl" aria-hidden="true"></i>
+        </div>
+        <h1 class="text-lg font-extrabold text-magenta uppercase tracking-tight">Painel Fino Sabor</h1>
+        <p class="text-xs text-gray-500 mt-1">Acompanhamento de Encomendas</p>
+      </div>
+      <form id="form-login" class="space-y-4">
+        <div>
+          <label for="input-senha" class="block text-xs font-bold text-gray-600 uppercase tracking-wide mb-1">Password</label>
+          <input type="password" id="input-senha" required autocomplete="current-password" inputmode="text"
+                 class="w-full border border-gray-200 rounded-xl px-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-magenta focus:border-magenta"
+                 placeholder="••••••••">
+        </div>
+        <p id="erro-login" class="text-xs text-red-500 hidden" role="alert">Password incorrecta. Tente novamente.</p>
+        <button type="submit" class="w-full bg-magenta hover:bg-magenta-dark active:bg-magenta-dark text-white font-bold py-3.5 rounded-xl transition text-sm uppercase tracking-wide">
+          Entrar
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Aviso instantâneo de nova encomenda (toast) -->
+  <div id="toast-nova-encomenda" class="hidden" role="status"></div>
+
+  <!-- ===================== PAINEL PRINCIPAL ===================== -->
+  <div id="tela-painel" class="hidden min-h-screen pb-10">
+
+    <header class="bg-white border-b border-magenta-soft sticky top-0 z-30 shadow-sm">
+      <div class="max-w-6xl mx-auto px-3 sm:px-6 py-3 sm:py-4 flex items-center justify-between gap-2">
+        <div class="min-w-0">
+          <h1 class="text-sm sm:text-lg font-extrabold text-magenta uppercase tracking-tight truncate">Painel de Encomendas</h1>
+          <p class="text-[11px] sm:text-xs text-gray-400 truncate">Fino Sabor — Gestão &amp; Acompanhamento</p>
+        </div>
+        <div class="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+
+          <!-- Central de Notificações -->
+          <div class="relative">
+            <button id="btn-notificacoes" aria-haspopup="true" aria-expanded="false" aria-controls="painel-notificacoes"
+              title="Notificações" aria-label="Ver notificações"
+              class="relative w-11 h-11 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 text-gray-500 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-magenta">
+              <i class="fa-solid fa-bell text-base" aria-hidden="true"></i>
+              <span id="badge-notificacoes" class="hidden absolute -top-1 -right-1 bg-magenta text-white text-[10px] font-bold rounded-full min-w-[18px] h-[18px] px-1 flex items-center justify-center">0</span>
+              <span id="ponto-ligacao" class="absolute bottom-0.5 right-0.5 w-2 h-2 rounded-full bg-gray-300" aria-hidden="true"></span>
+            </button>
+
+            <!-- Painel/dropdown de notificações -->
+            <div id="painel-notificacoes" class="hidden" role="dialog" aria-label="Notificações">
+              <div class="flex items-center justify-between px-4 py-3 border-b border-gray-100">
+                <span class="text-sm font-extrabold text-gray-800">Notificações</span>
+                <div class="flex items-center gap-3">
+                  <button id="btn-limpar-notificacoes" class="text-xs font-semibold text-gray-400 hover:text-magenta">Limpar todas</button>
+                  <button id="btn-fechar-notificacoes" aria-label="Fechar notificações" class="text-gray-400 hover:text-gray-600 w-7 h-7 flex items-center justify-center">
+                    <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+              <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
+                <span class="text-xs text-gray-500"><i class="fa-solid fa-volume-high mr-1.5" aria-hidden="true"></i>Som de aviso</span>
+                <button id="btn-som" role="switch" aria-checked="true" aria-label="Ligar ou desligar som de aviso" class="interruptor">
+                  <span class="interruptor-bola"></span>
+                </button>
+              </div>
+              <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between gap-2">
+                <span class="text-xs text-gray-500"><i class="fa-solid fa-mobile-screen-button mr-1.5" aria-hidden="true"></i>Avisos no telemóvel/computador</span>
+                <button id="btn-permitir-sistema" class="text-[11px] font-bold text-magenta border border-magenta-soft bg-magenta-light rounded-lg px-2.5 py-1.5 flex-shrink-0">Activar</button>
+              </div>
+              <div class="px-4 py-3 border-b border-gray-100 flex items-center justify-between gap-2">
+                <span class="text-xs text-gray-500 leading-snug"><i class="fa-brands fa-whatsapp mr-1.5 text-green-600" aria-hidden="true"></i>Abrir WhatsApp automaticamente ao mudar estado</span>
+                <button id="btn-auto-whatsapp" role="switch" aria-checked="true" aria-label="Ligar ou desligar abertura automática do WhatsApp" class="interruptor">
+                  <span class="interruptor-bola"></span>
+                </button>
+              </div>
+
+              <div id="lista-notificacoes" class="max-h-[50vh] overflow-y-auto"></div>
+              <p id="notificacoes-vazio" class="text-center text-xs text-gray-400 py-8">Sem notificações por agora.</p>
+            </div>
+          </div>
+
+          <button id="btn-actualizar" title="Actualizar" aria-label="Actualizar lista de encomendas" class="w-11 h-11 rounded-xl border border-gray-200 hover:bg-gray-50 active:bg-gray-100 text-gray-500 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-magenta">
+            <i class="fa-solid fa-rotate-right" aria-hidden="true"></i>
+          </button>
+          <button id="btn-sair" aria-label="Sair do painel" class="text-xs font-semibold text-gray-500 hover:text-magenta border border-gray-200 rounded-xl px-2.5 sm:px-3 h-11 flex items-center focus:outline-none focus:ring-2 focus:ring-magenta">
+            <i class="fa-solid fa-right-from-bracket sm:mr-1.5" aria-hidden="true"></i><span class="hidden sm:inline">Sair</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Guia rápido para quem está a usar o painel pela primeira vez -->
+    <div id="guia-rapido" class="hidden max-w-6xl mx-auto px-3 sm:px-6 pt-4">
+      <div class="bg-magenta-light border border-magenta-soft rounded-2xl p-4 flex items-start gap-3">
+        <i class="fa-solid fa-circle-info text-magenta text-lg mt-0.5" aria-hidden="true"></i>
+        <div class="flex-1 text-xs sm:text-sm text-gray-700 leading-relaxed">
+          <p class="font-bold text-magenta mb-1">Como funciona o painel:</p>
+          <p>1️⃣ Cada encomenda nova aparece aqui automaticamente, com som e aviso.</p>
+          <p>2️⃣ Depois de confirmar o pagamento, toca no botão de estado (ex: "Paga").</p>
+          <p>3️⃣ O WhatsApp abre-se sozinho com a mensagem já pronta — só precisas de tocar em <strong>"Enviar"</strong> dentro do WhatsApp.</p>
+        </div>
+        <button id="btn-fechar-guia" aria-label="Fechar guia" class="text-magenta/60 hover:text-magenta w-7 h-7 flex items-center justify-center flex-shrink-0">
+          <i class="fa-solid fa-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-3 sm:px-6 py-5 sm:py-6">
+
+      <!-- Busca rápida — essencial para encontrar a encomenda certa quando o
+           pagamento (M-Pesa/e-Mola) só é confirmado horas depois -->
+      <div class="relative mb-4">
+        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-gray-300 text-sm" aria-hidden="true"></i>
+        <input type="search" id="input-busca" inputmode="search" autocomplete="off"
+               placeholder="Procurar por nome, telefone ou nº da encomenda…"
+               aria-label="Procurar encomenda por nome, telefone ou número"
+               class="w-full pl-10 pr-9 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-magenta focus:border-magenta">
+        <button id="btn-limpar-busca" aria-label="Limpar busca" class="hidden absolute right-2.5 top-1/2 -translate-y-1/2 w-7 h-7 rounded-full text-gray-300 hover:text-gray-500 hover:bg-gray-50 flex items-center justify-center">
+          <i class="fa-solid fa-circle-xmark" aria-hidden="true"></i>
+        </button>
+      </div>
+
+      <!-- Filtros por estado (deslizam horizontalmente no telemóvel) -->
+      <div id="filtros-estado" class="flex flex-nowrap sm:flex-wrap gap-2 mb-5 overflow-x-auto scroll-clean pb-1" role="tablist" aria-label="Filtrar por estado"></div>
+
+      <!-- Resumo rápido -->
+      <div id="resumo-cards" class="grid grid-cols-2 sm:grid-cols-5 gap-2.5 sm:gap-3 mb-6"></div>
+
+      <!-- Lista de encomendas -->
+      <div id="lista-encomendas" class="space-y-4"></div>
+
+      <div id="estado-vazio" class="hidden text-center py-16 text-gray-400">
+        <i class="fa-solid fa-basket-shopping text-3xl mb-3" aria-hidden="true"></i>
+        <p id="estado-vazio-texto" class="text-sm">Nenhuma encomenda encontrada.</p>
+      </div>
+    </main>
+  </div>
+
+  <script src="painel.js"></script>
+</body>
+</html>

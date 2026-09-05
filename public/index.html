@@ -1,0 +1,1335 @@
+<!DOCTYPE html>
+<html lang="pt-PT" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Fino Sabor | Confeitaria & Salgados Artesanais</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        magenta: '#e20074',
+                        'magenta-dark': '#b8005d',
+                        'magenta-light': '#fff0f6',
+                        'magenta-soft': '#fce4ec'
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { background-color: #ffffff; -webkit-tap-highlight-color: transparent; }
+        .scroll-clean::-webkit-scrollbar { display: none; }
+        .scroll-clean { -ms-overflow-style: none; scrollbar-width: none; }
+        .img-fade { transition: opacity 0.3s ease-in-out, transform 0.3s ease-out; }
+    </style>
+</head>
+<body class="text-gray-800 antialiased selection:bg-magenta selection:text-white pb-24 md:pb-0">
+
+    <!-- NAV BAR COM LOGOTIPO -->
+    <header class="bg-white/95 backdrop-blur-md shadow-sm sticky top-0 z-40 border-b border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <a href="#inicio" class="flex items-center gap-3">
+                    <img src="imagens/logo.jpeg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150/e20074/FFFFFF?text=Fino+Sabor';" alt="Fino Sabor Logo" class="h-12 w-auto object-contain rounded-full border border-magenta-soft p-0.5">
+                    <div class="flex flex-col">
+                        <span class="text-xl sm:text-2xl font-extrabold text-magenta tracking-tight uppercase">Fino Sabor</span>
+                        <span class="text-[9px] sm:text-[10px] text-gray-500 uppercase tracking-widest font-semibold italic -mt-1">Doces & Salgados Artesanais</span>
+                    </div>
+                </a>
+                
+                <nav class="hidden md:flex space-x-8 font-semibold text-sm text-gray-700">
+                    <a href="#inicio" class="hover:text-magenta transition duration-200">Início</a>
+                    <a href="#promocoes" class="hover:text-magenta transition duration-200 text-magenta font-bold">Promoções</a>
+                    <a href="#cardapio" class="hover:text-magenta transition duration-200">Cardápio</a>
+                    <a href="#menu-semanal" class="hover:text-magenta transition duration-200">Menú Semanal</a>
+                    <a href="#galeria" class="hover:text-magenta transition duration-200">Galeria</a>
+                    <a href="#calculadora" class="hover:text-magenta transition duration-200">Calculadora</a>
+                    <a href="#contacto-secao" class="hover:text-magenta transition duration-200">Contacto</a>
+                </nav>
+
+                <button onclick="toggleCarrinho()" class="relative bg-magenta-light hover:bg-magenta-soft text-magenta px-3.5 py-2.5 rounded-xl transition flex items-center gap-2 font-semibold text-sm border border-magenta-soft">
+                    <i class="fa-solid fa-cart-shopping text-magenta text-lg"></i>
+                    <span class="hidden sm:inline">Meu Pedido</span>
+                    <span id="cart-count-header" class="bg-magenta text-white text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative text-white min-h-[60vh] flex items-center overflow-hidden bg-gradient-to-r from-magenta to-magenta-dark">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-20 py-12 md:py-20">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div class="space-y-5 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 bg-white/20 text-white border border-white/30 px-3.5 py-1 rounded-full text-xs font-bold tracking-wide uppercase backdrop-blur-sm">
+                        <i class="fa-solid fa-star text-amber-300"></i> Confeitaria & Salgados
+                    </div>
+                    <h1 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white leading-tight">Fino Sabor</h1>
+                    <p class="text-magenta-light text-lg sm:text-2xl font-medium italic">Sabor inigualável para os seus momentos especiais.</p>
+                    <p class="text-white/90 text-xs sm:text-base leading-relaxed max-w-lg mx-auto md:mx-0">
+                        Bolos de aniversário, massas folhadas crocantes, salgados por dúzia e pratos executivos diários preparados com todo carinho.
+                    </p>
+                    <div class="pt-3 flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                        <a href="#promocoes" class="bg-white hover:bg-magenta-light text-magenta font-extrabold px-7 py-3.5 rounded-xl shadow-xl transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-fire"></i> Ver Promoções
+                        </a>
+                        <a href="#cardapio" class="bg-amber-400 hover:bg-amber-500 text-gray-900 font-extrabold px-7 py-3.5 rounded-xl shadow-xl transition-all duration-300 text-center uppercase tracking-wider text-xs sm:text-sm flex items-center justify-center gap-2">
+                            Ver Cardápio Geral <i class="fa-solid fa-arrow-down"></i>
+                        </a>
+                    </div>
+                </div>
+                <!-- IMAGEM DA HERO SECTION -->
+                <div class="flex justify-center md:justify-end">
+                    <div class="relative w-full max-w-md aspect-square rounded-3xl overflow-hidden shadow-2xl border-4 border-white/20 group">
+                        <img src="imagens/img.jpeg" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="Especiais Fino Sabor" class="w-full h-full object-cover group-hover:scale-105 transition duration-500 cursor-zoom-in">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 1º SEÇÃO: PROMOÇÕES / OFERTAS ESPECIAS -->
+    <section id="promocoes" class="bg-gradient-to-b from-magenta-light to-white py-12 border-b border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="bg-magenta text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-tags mr-1"></i> Ofertas Especiais
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Especiais de Massa Folhada</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Aproveite nossas folhadas imperdíveis em promoção especial</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto" id="lista-promocoes">
+                <div class="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border-2 border-magenta transition-all duration-300 flex flex-col justify-between relative group transform hover:-translate-y-1">
+                    <div class="absolute top-3 left-3 bg-red-600 text-white text-[11px] font-black px-3.5 py-1 rounded-full uppercase tracking-wider z-20 shadow-md flex items-center gap-1">
+                        <i class="fa-solid fa-fire"></i> Destaque da Casa
+                    </div>
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/9] bg-gray-100 group/img">
+                            <img id="img-promo-1" src="imagens/massafolhada.jpeg" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="Massa Folhada" class="w-full h-full object-cover img-fade cursor-zoom-in">
+                            <button onclick="mudarFotoPromo(1, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-magenta text-white w-8 h-8 rounded-full flex items-center justify-center text-xs z-20 transition shadow-md">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button onclick="mudarFotoPromo(1, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-magenta text-white w-8 h-8 rounded-full flex items-center justify-center text-xs z-20 transition shadow-md">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div id="dots-promo-1" class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 z-20"></div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-magenta transition-colors">Massa Folhada</h3>
+                            <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">Salgados folhados levemente dourados, crocantes e artesanais com recheios irresistíveis.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100 mt-2">
+                        <div>
+                            <span class="text-xs text-gray-400 line-through block">160 Mt</span>
+                            <span class="text-2xl font-extrabold text-magenta">135 Mt</span>
+                        </div>
+                        <button onclick="adicionarPromoAoCarrinho('Massa Folhada', 135, 'Promocional Destaque')" class="bg-magenta hover:bg-magenta-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Aproveitar
+                        </button>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-3xl overflow-hidden shadow-md hover:shadow-xl border-2 border-magenta/20 transition-all duration-300 flex flex-col justify-between relative group transform hover:-translate-y-1">
+                    <div class="absolute top-3 left-3 bg-amber-500 text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-wider z-20 shadow-md">
+                        Crocância Extra
+                    </div>
+                    <div>
+                        <div class="relative overflow-hidden aspect-[16/9] bg-gray-100 group/img">
+                            <img id="img-promo-2" src="imagens/massafolhadatorada1.jpeg" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="Massa Folhada Torrada" class="w-full h-full object-cover img-fade cursor-zoom-in">
+                            <button onclick="mudarFotoPromo(2, -1)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-magenta text-white w-8 h-8 rounded-full flex items-center justify-center text-xs z-20 transition shadow-md">
+                                <i class="fa-solid fa-chevron-left"></i>
+                            </button>
+                            <button onclick="mudarFotoPromo(2, 1)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/40 hover:bg-magenta text-white w-8 h-8 rounded-full flex items-center justify-center text-xs z-20 transition shadow-md">
+                                <i class="fa-solid fa-chevron-right"></i>
+                            </button>
+                            <div id="dots-promo-2" class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 z-20"></div>
+                        </div>
+                        <div class="p-6 space-y-3">
+                            <h3 class="text-xl font-bold text-gray-900 group-hover:text-magenta transition-colors">Massa Folhada Torrada</h3>
+                            <p class="text-gray-500 text-xs sm:text-sm leading-relaxed">Assada no ponto perfeito com acabamento bem torrado e dourado para extra crocância.</p>
+                        </div>
+                    </div>
+                    <div class="p-6 pt-0 flex items-center justify-between border-t border-gray-100 mt-2">
+                        <div>
+                            <span class="text-xs text-gray-400 line-through block">200 Mt</span>
+                            <span class="text-2xl font-extrabold text-magenta">160 Mt</span>
+                        </div>
+                        <button onclick="adicionarPromoAoCarrinho('Massa Folhada Torrada', 135, 'Promocional Torrada Extra')" class="bg-magenta hover:bg-magenta-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition duration-300 flex items-center gap-2 shadow-md">
+                            <i class="fa-solid fa-cart-plus"></i> Aproveitar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2º SEÇÃO: CARDÁPIO GERAL -->
+    <section id="cardapio" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div class="text-center space-y-2 mb-8">
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Nosso Cardápio Geral</h2>
+            <p class="text-gray-500 text-xs sm:text-sm">Escolha seus produtos e personalize os tamanhos e recheios</p>
+            <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+        </div>
+
+        <div class="max-w-lg mx-auto mb-6">
+            <div class="relative flex items-center bg-white shadow-sm border border-gray-200 rounded-2xl overflow-hidden focus-within:border-magenta focus-within:ring-2 focus-within:ring-magenta/20 transition-all">
+                <span class="pl-4 text-gray-400"><i class="fa-solid fa-magnifying-glass"></i></span>
+                <input type="text" id="campo-busca" oninput="filtrarProdutos()" placeholder="Buscar bolo, massa folhada, caril..." class="w-full pl-3 pr-4 py-3 text-sm bg-transparent outline-none text-gray-700">
+            </div>
+        </div>
+
+        <div class="w-full border-b border-gray-200 mb-8 overflow-hidden">
+            <div class="flex space-x-2 overflow-x-auto pb-3 scroll-clean justify-start md:justify-center" id="container-categorias">
+                <button onclick="filtrarCategoria('todos', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-bold bg-magenta text-white text-xs sm:text-sm transition shadow-sm">Todos</button>
+                <button onclick="filtrarCategoria('salgados', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition">Salgados</button>
+                <button onclick="filtrarCategoria('bolos', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition">Bolos</button>
+                <button onclick="filtrarCategoria('sobremesas', this)" class="btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition">Sobremesas</button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="lista-produtos"></div>
+    </section>
+
+    <!-- 3º SEÇÃO: MENÚ SEMANAL -->
+    <section id="menu-semanal" class="bg-white py-12 border-b border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-10">
+                <span class="bg-magenta text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-utensils mr-1"></i> Pratos Executivos
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Menú Semanal</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Escolha suas refeições de Segunda a Sexta-feira</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+                
+                <!-- SEGUNDA -->
+                <div class="bg-magenta-light/40 rounded-2xl p-4 border border-magenta-soft flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="bg-magenta text-white text-center py-1.5 rounded-xl font-bold text-xs uppercase tracking-wider mb-3">
+                            Segunda-feira
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Bife de Galinha Grelhado</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ legumes ao vapor</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">285 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Bife de Galinha Grelhado c/ Legumes', 285, 'Segunda-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Caril de Carne</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz de alho e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">240 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Caril de Carne c/ Arroz de Alho', 240, 'Segunda-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="pb-1">
+                                <span class="text-xs font-bold text-gray-800 block">Camarão Grelhado</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">350 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Camarão Grelhado c/ Arroz', 350, 'Segunda-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- TERÇA -->
+                <div class="bg-magenta-light/40 rounded-2xl p-4 border border-magenta-soft flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="bg-magenta text-white text-center py-1.5 rounded-xl font-bold text-xs uppercase tracking-wider mb-3">
+                            Terça-feira
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Jardineira de Frango</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz de côco e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">220 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Jardineira de Frango c/ Arroz de Côco', 220, 'Terça-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Bife Grelhado</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz e feijão preto</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">350 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Bife Grelhado c/ Feijão Preto', 350, 'Terça-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="pb-1">
+                                <span class="text-xs font-bold text-gray-800 block">Bife Grelhado</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ purê de batata doce e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">380 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Bife Grelhado c/ Purê de Batata Doce', 380, 'Terça-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- QUARTA -->
+                <div class="bg-magenta-light/40 rounded-2xl p-4 border border-magenta-soft flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="bg-magenta text-white text-center py-1.5 rounded-xl font-bold text-xs uppercase tracking-wider mb-3">
+                            Quarta-feira
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Posta de Peixe Grelhado</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ legumes ao vapor</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">250 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Posta de Peixe Grelhado c/ Legumes', 250, 'Quarta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Massa Chinesa</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">de carne e camarão</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">350 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Massa Chinesa de Carne e Camarão', 350, 'Quarta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="pb-1">
+                                <span class="text-xs font-bold text-gray-800 block">Caril de Amendoim de Frango</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">250 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Caril de Amendoim de Frango', 250, 'Quarta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- QUINTA -->
+                <div class="bg-magenta-light/40 rounded-2xl p-4 border border-magenta-soft flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="bg-magenta text-white text-center py-1.5 rounded-xl font-bold text-xs uppercase tracking-wider mb-3">
+                            Quinta-feira
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Carne Assada na Panela</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">280 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Carne Assada na Panela', 280, 'Quinta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Caldeirada de Peixe</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">280 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Caldeirada de Peixe c/ Arroz', 280, 'Quinta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="pb-1">
+                                <span class="text-xs font-bold text-gray-800 block">Frango Grelhado à Moda da Casa</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz e batata frita</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">250 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Frango Grelhado à Moda da Casa', 250, 'Quinta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- SEXTA -->
+                <div class="bg-magenta-light/40 rounded-2xl p-4 border border-magenta-soft flex flex-col justify-between hover:shadow-md transition">
+                    <div>
+                        <div class="bg-magenta text-white text-center py-1.5 rounded-xl font-bold text-xs uppercase tracking-wider mb-3">
+                            Sexta-feira
+                        </div>
+                        <ul class="space-y-3">
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Biryane de Frango</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">Especialidade temperada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">350 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Biryane de Frango', 350, 'Sexta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="border-b border-magenta-soft/60 pb-2">
+                                <span class="text-xs font-bold text-gray-800 block">Almôndegas de Carne</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">c/ arroz de espinafre e salada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">250 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Almôndegas de Carne c/ Arroz de Espinafre', 250, 'Sexta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                            <li class="pb-1">
+                                <span class="text-xs font-bold text-gray-800 block">Lassanha de Carne</span>
+                                <span class="text-[11px] text-gray-500 block mb-1">Massa artesanal recheada</span>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-xs font-extrabold text-magenta">350 Mzn</span>
+                                    <button onclick="adicionarPromoAoCarrinho('Lassanha de Carne', 350, 'Sexta-feira')" class="bg-magenta hover:bg-magenta-dark text-white px-2.5 py-1 rounded-lg text-[10px] font-bold transition">Pedir</button>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- GALERIA DE FOTOS -->
+    <section id="galeria" class="bg-gradient-to-b from-white to-magenta-light py-12 border-t border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="bg-magenta text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-camera mr-1"></i> Nossos Momentos
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Galeria de Fotos</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Confira um pouco das nossas produções diárias e delicatessens artesanais</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
+                
+                <div onclick="abrirZoom('imagens/mesasalgados2.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/mesasalgados2.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 1" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/combosalgados.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/combosalgados.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 2" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/massafolhadatorada2.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/massafolhadatorada2.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 3" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/combosalgados12.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/combosalgados12.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 4" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/coombosalgados11.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/coombosalgados11.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 5" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/buffemesa1.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/buffemesa1.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 6" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/buffemesa2.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/buffemesa2.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 7" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/buffetmesa.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/buffetmesa.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 8" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/mesasalgados.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/mesasalgados.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 9" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/mesadoces.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/mesadoces.jpeg" onerror="tratarErroImagem(this)" alt="Galeria Fino Sabor 10" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/feedback.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/feedback.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/salg1.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/salg1.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+
+                <div onclick="abrirZoom('imagens/boloaniver.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/boloaniver.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/boloaniver3.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/boloaniver3.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/boloaniver4.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/boloaniver4.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/boloparaeventos.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/boloparaeventos.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/boloaniver8.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/boloaniver8.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+                <div onclick="abrirZoom('imagens/img.jpeg')" class="relative overflow-hidden rounded-2xl aspect-square bg-gray-100 group shadow-sm hover:shadow-lg transition cursor-pointer">
+                    <img src="imagens/img.jpeg" onerror="tratarErroImagem(this)" alt="Feedback do Cliente - Fino Sabor" class="w-full h-full object-cover group-hover:scale-110 transition duration-500">
+                    <div class="absolute inset-0 bg-magenta/30 opacity-0 group-hover:opacity-100 transition flex items-center justify-center">
+                        <i class="fa-solid fa-magnifying-glass-plus text-white text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CALCULADORA DE EVENTOS -->
+    <section id="calculadora" class="bg-gray-50 py-12 border-t border-gray-100">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-8">
+                <span class="text-xs font-bold text-magenta uppercase tracking-wider">Simulador Rápido</span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Calculadora de Eventos</h2>
+                <p class="text-gray-500 text-xs sm:text-sm">Calcule a estimativa de doces, salgados e tamanho de bolo ideal para a sua festa</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="bg-white rounded-3xl p-6 sm:p-8 shadow-lg border border-magenta-soft space-y-6">
+                <form id="formCalculadora" onsubmit="calcularEvento(event)" class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label for="calcPessoas" class="block text-xs font-bold text-magenta uppercase tracking-wider mb-2">Nº de Convidados *</label>
+                        <input type="number" id="calcPessoas" min="1" placeholder="Ex: 30" required class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-magenta">
+                    </div>
+
+                    <div>
+                        <label for="calcTipo" class="block text-xs font-bold text-magenta uppercase tracking-wider mb-2">Tipo de Evento *</label>
+                        <select id="calcTipo" required class="w-full p-3 border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-magenta">
+                            <option value="Aniversário">Aniversário</option>
+                            <option value="Casamento">Casamento / Baptizado</option>
+                            <option value="Corporativo">Evento Corporativo</option>
+                            <option value="Festa Infantil">Festa Infantil</option>
+                        </select>
+                    </div>
+
+                    <div class="sm:col-span-2 pt-2">
+                        <button type="submit" class="w-full bg-magenta hover:bg-magenta-dark text-white font-bold py-3.5 rounded-xl transition shadow-md flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Calcular Estimativa
+                        </button>
+                    </div>
+                </form>
+
+                <div id="resultadoCalculadora" class="hidden bg-magenta-light p-5 rounded-2xl border border-magenta-soft space-y-4">
+                    <h3 class="font-bold text-magenta text-sm sm:text-base border-b border-magenta-soft pb-2 flex items-center gap-2">
+                        <i class="fa-solid fa-clipboard-check"></i> Recomendação Fino Sabor:
+                    </h3>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+                        <div class="bg-white p-3 rounded-xl border border-magenta-soft">
+                            <strong class="text-gray-800 block">🥐 Salgados Sugeridos:</strong>
+                            <span id="resSalgados" class="text-magenta font-bold">0 dúzias</span>
+                        </div>
+                        <div class="bg-white p-3 rounded-xl border border-magenta-soft">
+                            <strong class="text-gray-800 block">🎂 Bolo Sugerido:</strong>
+                            <span id="resBolo" class="text-magenta font-bold">Forma F18</span>
+                        </div>
+                    </div>
+
+                    <button onclick="enviarCalculoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 rounded-xl shadow-md transition flex items-center justify-center gap-2 text-xs uppercase tracking-wide">
+                        <i class="fa-brands fa-whatsapp text-base"></i> Pedir Orçamento Deste Cálculo
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SEÇÃO EXCLUSIVA DE CONTACTO & PAGAMENTO -->
+    <section id="contacto-secao" class="bg-gradient-to-b from-white to-magenta-light/50 py-12 border-t border-magenta-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center space-y-2 mb-10">
+                <span class="bg-magenta text-white text-[10px] sm:text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-widest shadow-sm inline-block">
+                    <i class="fa-solid fa-paper-plane mr-1"></i> Fala Connosco
+                </span>
+                <h2 class="text-2xl sm:text-3xl font-extrabold text-magenta tracking-tight">Entre em Contacto</h2>
+                <p class="text-gray-600 text-xs sm:text-sm">Estamos prontos para atendê-lo. Envie uma mensagem ou visite-nos</p>
+                <div class="w-16 h-1 bg-magenta mx-auto rounded-full mt-2"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 max-w-6xl mx-auto mb-8">
+                <!-- TELEFONE / WHATSAPP -->
+                <div class="bg-white p-6 rounded-2xl border border-magenta-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-magenta-light rounded-full flex items-center justify-center mx-auto text-magenta text-xl">
+                        <i class="fa-solid fa-phone"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Telefone & WhatsApp</h3>
+                    <p class="text-xs text-gray-500">Atendimento rápido para encomendas e dúvidas</p>
+                    <a href="https://wa.me/258845548352" target="_blank" class="inline-block font-extrabold text-magenta hover:text-magenta-dark text-sm tracking-wide">
+                        +258 84 554 8352
+                    </a>
+                </div>
+
+                <!-- PAGAMENTO M-PESA -->
+                <div class="bg-white p-6 rounded-2xl border-2 border-magenta rounded-2xl shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mx-auto text-red-600 text-xl font-black">
+                        M
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Método de Pagamento</h3>
+                    <p class="text-xs text-gray-500">M-Pesa para confirmação das encomendas</p>
+                    <div class="bg-magenta-light p-2 rounded-xl text-xs space-y-1">
+                        <p class="font-extrabold text-magenta text-sm">845548352</p>
+                        <p class="font-bold text-gray-700">Nome: Nissia</p>
+                    </div>
+                </div>
+
+                <!-- LOCALIZAÇÃO -->
+                <div class="bg-white p-6 rounded-2xl border border-magenta-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-magenta-light rounded-full flex items-center justify-center mx-auto text-magenta text-xl">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Nossa Localização</h3>
+                    <p class="text-xs text-gray-500">Venha levantar o seu pedido directamente connosco</p>
+                    <span class="inline-block font-extrabold text-gray-800 text-sm">
+                        Matola, por trás da Novare
+                    </span>
+                </div>
+
+                <!-- REDES SOCIAIS -->
+                <div class="bg-white p-6 rounded-2xl border border-magenta-soft shadow-sm hover:shadow-md transition text-center space-y-3">
+                    <div class="w-12 h-12 bg-magenta-light rounded-full flex items-center justify-center mx-auto text-magenta text-xl">
+                        <i class="fa-solid fa-hashtag"></i>
+                    </div>
+                    <h3 class="font-bold text-gray-900 text-base">Redes Sociais</h3>
+                    <p class="text-xs text-gray-500">Siga as nossas novidades diárias</p>
+                    <div class="flex justify-center gap-4 text-xl pt-1">
+                        <a href="https://wa.me/258845548352" target="_blank" class="text-magenta hover:scale-110 transition"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://facebook" target="_blank" class="text-magenta hover:scale-110 transition"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="https://www.instagram.com/finosabormz_official?igsh=MWRyNGluMmxkMjM5bQ==" target="_blank" class="text-magenta hover:scale-110 transition"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MODAL DE ZOOM / LIGHTBOX -->
+    <div id="modalZoom" class="fixed inset-0 bg-black/90 z-50 hidden flex items-center justify-center p-4 backdrop-blur-md cursor-zoom-out" onclick="fecharZoom()">
+        <button onclick="fecharZoom()" class="absolute top-5 right-5 text-white/80 hover:text-white text-3xl z-50 p-2"><i class="fa-solid fa-xmark"></i></button>
+        <img id="imgModalZoom" src="" alt="Imagem Ampliada" class="max-w-full max-h-[90vh] object-contain rounded-xl shadow-2xl transition-transform duration-300">
+    </div>
+
+    <!-- MODAL DE PERSONALIZAÇÃO -->
+    <div id="modalOpcoes" class="fixed inset-0 bg-black/70 z-50 hidden flex items-center justify-center p-3 sm:p-4 backdrop-blur-sm">
+        <div class="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl transform transition-all flex flex-col max-h-[90vh]">
+            <div class="relative bg-magenta text-white p-4 sm:p-5 flex items-center justify-between">
+                <h3 id="modalOpcoesTitulo" class="font-bold text-base sm:text-lg text-white">Personalizar Produto</h3>
+                <button onclick="fecharModalOpcoes()" class="text-white/80 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="p-4 sm:p-6 overflow-y-auto space-y-4 flex-1" id="modalOpcoesCorpo"></div>
+
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 flex items-center justify-between gap-3">
+                <div>
+                    <span class="text-[10px] sm:text-xs text-gray-400 block">Preço Total</span>
+                    <span id="modalOpcoesPreco" class="text-lg sm:text-xl font-extrabold text-magenta">0 MZN</span>
+                </div>
+                <button onclick="confirmarAdicaoCarrinho()" class="bg-magenta hover:bg-magenta-dark text-white px-5 py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center gap-2">
+                    <i class="fa-solid fa-cart-plus"></i> Adicionar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- DRAWER / MODAL DO CARRINHO -->
+    <div id="carrinho-modal" class="fixed inset-0 bg-black/60 z-50 hidden transition-opacity duration-300 flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between transform transition-transform duration-300">
+            <div class="p-4 sm:p-5 border-b border-gray-100 flex items-center justify-between bg-magenta text-white">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-basket-shopping text-white text-xl"></i>
+                    <h3 class="font-bold text-base sm:text-lg">Seu Pedido</h3>
+                </div>
+                <button onclick="toggleCarrinho()" class="text-white/80 hover:text-white text-xl p-1"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+
+            <div class="p-4 sm:p-5 overflow-y-auto flex-1 space-y-3" id="itens-carrinho"></div>
+
+            <div class="p-4 sm:p-5 border-t border-gray-100 bg-gray-50 space-y-4">
+                <!-- INFORMAÇÃO DE PAGAMENTO DENTRO DO CARRINHO -->
+                <div class="bg-magenta-light/60 p-3 rounded-xl border border-magenta-soft text-xs space-y-1">
+                    <span class="block font-bold text-magenta uppercase tracking-wider">💳 Método de Pagamento (M-Pesa):</span>
+                    <p class="text-gray-700"><strong>Número:</strong> 845548352 | <strong>Nome:</strong> Nissia</p>
+                </div>
+
+                <!-- DADOS DO CLIENTE (necessário para acompanhamento da encomenda no painel) -->
+                <div class="bg-white p-3 rounded-xl border border-gray-200 space-y-2">
+                    <span class="block text-xs font-bold text-magenta uppercase tracking-wider">Os Seus Dados:</span>
+                    <input type="text" id="input-nome-cliente" placeholder="Nome completo"
+                           class="w-full text-xs border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:border-magenta">
+                    <input type="tel" id="input-telefone-cliente" placeholder="Nº de Telefone / WhatsApp (ex: 84xxxxxxx)"
+                           class="w-full text-xs border border-gray-200 rounded-lg px-3 py-2.5 focus:outline-none focus:border-magenta">
+                </div>
+
+                <div class="bg-white p-3 rounded-xl border border-gray-200 space-y-2">
+                    <span class="block text-xs font-bold text-magenta uppercase tracking-wider">Forma de Entrega:</span>
+                    <div class="grid grid-cols-2 gap-2 text-xs">
+                        <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-gray-50 hover:border-magenta">
+                            <input type="radio" name="opcaoEntrega" value="retirada" checked onchange="atualizarTotalCarrinho()" class="accent-magenta">
+                            <span>Retirada no Local</span>
+                        </label>
+                        <label class="flex items-center gap-2 p-2 border rounded-lg cursor-pointer bg-gray-50 hover:border-magenta">
+                            <input type="radio" name="opcaoEntrega" value="delivery" onchange="atualizarTotalCarrinho()" class="accent-magenta">
+                            <span>Delivery (+100 MZN)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="space-y-1">
+                    <div class="flex justify-between text-xs text-gray-500">
+                        <span>Subtotal:</span>
+                        <span id="subtotal-carrinho">0 MZN</span>
+                    </div>
+                    <div class="flex justify-between text-xs text-gray-500" id="linha-taxa-delivery">
+                        <span>Taxa de Passagem/Delivery:</span>
+                        <span id="taxa-delivery-valor">0 MZN</span>
+                    </div>
+                    <div class="flex items-center justify-between text-base font-bold text-gray-800 pt-1 border-t border-gray-200">
+                        <span>Total Final:</span>
+                        <span id="total-carrinho" class="text-xl text-magenta font-extrabold">0 MZN</span>
+                    </div>
+                </div>
+
+                <button onclick="enviarPedidoWhatsApp()" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2 text-xs sm:text-sm uppercase tracking-wide">
+                    <i class="fa-brands fa-whatsapp text-lg"></i> Finalizar no WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- BOTÃO FLUTUANTE DO WHATSAPP (AJUDA E SUPORTE DO SITE) -->
+    <a href="https://wa.me/258845548352?text=Ol%C3%A1!%20Estou%20no%20site%20da%20Fino%20Sabor%20e%20gostaria%20de%20ajuda%20para%20entender%20como%20fazer%20o%20meu%20pedido." 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       class="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-3.5 md:px-5 md:py-3 rounded-full shadow-2xl transition-all duration-300 flex items-center gap-2 group hover:scale-105 active:scale-95 border-2 border-white"
+       aria-label="Ajuda no WhatsApp">
+        <i class="fa-brands fa-whatsapp text-2xl md:text-2xl"></i>
+        <span class="hidden md:inline font-bold text-xs uppercase tracking-wider">Precisa de ajuda?</span>
+    </a>
+
+    <!-- BARRA DE MENU FLUTUANTE (MOBILE NAVIGATION BAR) -->
+    <nav class="fixed bottom-3 left-4 right-4 z-40 bg-white/90 backdrop-blur-md rounded-2xl shadow-2xl border border-magenta-soft p-1.5 md:hidden">
+        <div class="flex justify-around items-center">
+            <a href="#inicio" class="flex flex-col items-center py-1 px-2 text-gray-600 hover:text-magenta transition text-center">
+                <i class="fa-solid fa-house text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Início</span>
+            </a>
+            <a href="#promocoes" class="flex flex-col items-center py-1 px-2 text-magenta font-bold transition text-center">
+                <i class="fa-solid fa-tags text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Promoções</span>
+            </a>
+            <a href="#cardapio" class="flex flex-col items-center py-1 px-2 text-gray-600 hover:text-magenta transition text-center">
+                <i class="fa-solid fa-utensils text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Cardápio</span>
+            </a>
+            <a href="#menu-semanal" class="flex flex-col items-center py-1 px-2 text-gray-600 hover:text-magenta transition text-center">
+                <i class="fa-solid fa-calendar-days text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Menú</span>
+            </a>
+            <button onclick="toggleCarrinho()" class="relative flex flex-col items-center py-1 px-2 text-magenta font-bold transition text-center">
+                <i class="fa-solid fa-basket-shopping text-base"></i>
+                <span class="text-[10px] font-semibold mt-0.5">Pedido</span>
+                <span id="cart-count-float" class="absolute -top-1 -right-1 bg-magenta text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center border border-white">0</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- FOOTER COM LOGOTIPO E CONTACTOS -->
+    <footer id="contacto" class="bg-gradient-to-b from-magenta to-magenta-dark text-white pt-12 pb-16 md:pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div class="space-y-3 flex flex-col items-center md:items-start">
+                <div class="flex items-center gap-3">
+                    <img src="imagens/logo.jpeg" onerror="this.onerror=null; this.src='https://via.placeholder.com/150x150/e20074/FFFFFF?text=Fino+Sabor';" alt="Fino Sabor Logo Rodapé" class="h-12 w-auto object-contain bg-white rounded-full p-1 border border-magenta-soft">
+                    <h3 class="text-2xl font-extrabold tracking-wide text-white uppercase">Fino Sabor</h3>
+                </div>
+                <p class="text-magenta-light text-xs sm:text-sm leading-relaxed">Doces, salgados e refeições especiais preparadas para tornar suas comemorações e dias inesquecíveis.</p>
+            </div>
+            
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-white tracking-wider">Contactos & Localização</h4>
+                <p class="text-magenta-light text-xs sm:text-sm"><i class="fa-solid fa-location-dot mr-2"></i> Matola, por trás da Novare</p>
+                <p class="text-magenta-light text-xs sm:text-sm"><i class="fa-solid fa-phone mr-2"></i> +258 84 554 8352</p>
+                <p class="text-magenta-light text-xs sm:text-sm"><i class="fa-solid fa-credit-card mr-2"></i> M-Pesa: 845548352 (Nissia)</p>
+            </div>
+
+            <div class="space-y-3">
+                <h4 class="text-xs font-bold uppercase text-white tracking-wider">Redes Sociais</h4>
+                <div class="flex justify-center md:justify-start gap-4 text-2xl pt-1">
+                    <a href="https://wa.me/258845548352" target="_blank" class="hover:text-amber-300 transition text-white" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+                    <a href="https://facebook" target="_blank" class="hover:text-amber-300 transition text-white" title="Facebook"><i class="fa-brands fa-facebook"></i></a>
+                    <a href="https://www.instagram.com/finosabormz_official?igsh=MWRyNGluMmxkMjM5bQ==" target="_blank" class="hover:text-amber-300 transition text-white" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+
+        <hr class="border-white/20 my-8 max-w-7xl mx-auto">
+        <div class="text-center text-xs text-magenta-light">&copy; 2026 Fino Sabor. Todos os direitos reservados.</div>
+    </footer>
+
+    <!-- SCRIPTS JS -->
+    <script src="js/script.js"></script>
+    <script>
+        let categoriaAtual = 'todos';
+        let indicesImagensAtivas = {};
+        let carrinho = [];
+        let produtoSelecionadoTemp = null;
+        let precoCalculadoTemp = 0;
+        let timerSlideshow = null;
+        let ultimoCalculoEvento = null;
+
+        const IMG_FALLBACK = "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=500&auto=format&fit=crop";
+
+        const fotosPromocoes = {
+            1: ["imagens/massafolhada.jpeg"],
+            2: ["imagens/massafolhadatorada1.jpeg", "imagens/massafolhadatorada2.jpeg", "imagens/massafolhadatorada3.jpeg"]
+        };
+
+        let indicesPromo = { 1: 0, 2: 0 };
+
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof produtosAginaSabores !== 'undefined') {
+                renderizarProdutos(produtosAginaSabores);
+            }
+            renderizarIndicadoresPromo(1);
+            renderizarIndicadoresPromo(2);
+            iniciarSlideshowAutomatico();
+        });
+
+        function tratarErroImagem(imgElement) {
+            imgElement.onerror = null;
+            imgElement.src = IMG_FALLBACK;
+        }
+
+        function abrirZoom(src) {
+            const modal = document.getElementById('modalZoom');
+            const img = document.getElementById('imgModalZoom');
+            img.src = src;
+            modal.classList.remove('hidden');
+        }
+
+        function fecharZoom() {
+            document.getElementById('modalZoom').classList.add('hidden');
+        }
+
+        function mudarFotoPromo(promoId, direcao) {
+            const fotos = fotosPromocoes[promoId];
+            if (!fotos || fotos.length === 0) return;
+
+            indicesPromo[promoId] += direcao;
+            if (indicesPromo[promoId] >= fotos.length) indicesPromo[promoId] = 0;
+            if (indicesPromo[promoId] < 0) indicesPromo[promoId] = fotos.length - 1;
+
+            const img = document.getElementById(`img-promo-${promoId}`);
+            if (img) {
+                img.style.opacity = '0.3';
+                setTimeout(() => {
+                    img.src = fotos[indicesPromo[promoId]];
+                    img.style.opacity = '1';
+                }, 150);
+            }
+            renderizarIndicadoresPromo(promoId);
+        }
+
+        function renderizarIndicadoresPromo(promoId) {
+            const container = document.getElementById(`dots-promo-${promoId}`);
+            const fotos = fotosPromocoes[promoId];
+            if (!container || !fotos) return;
+
+            container.innerHTML = fotos.map((_, idx) => `
+                <span class="w-2 h-2 rounded-full transition-all duration-300 ${idx === indicesPromo[promoId] ? 'bg-magenta w-5' : 'bg-white/80'}"></span>
+            `).join('');
+        }
+
+        function iniciarSlideshowAutomatico() {
+            if (timerSlideshow) clearInterval(timerSlideshow);
+            timerSlideshow = setInterval(() => {
+                if (typeof produtosAginaSabores !== 'undefined') {
+                    produtosAginaSabores.forEach(produto => {
+                        if (produto.imagens && produto.imagens.length > 1) {
+                            mudarFotoCard(produto.id, 1, false);
+                        }
+                    });
+                }
+            }, 3500);
+        }
+
+        function renderizarProdutos(lista) {
+            const container = document.getElementById('lista-produtos');
+            container.innerHTML = "";
+
+            if (!lista || lista.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-gray-400 italic py-12 text-sm">Nenhum produto encontrado nesta categoria.</p>`;
+                return;
+            }
+
+            lista.forEach(p => {
+                const fotosArray = p.imagens && p.imagens.length > 0 ? p.imagens : [IMG_FALLBACK];
+                const pId = p.id;
+                if (indicesImagensAtivas[pId] === undefined) indicesImagensAtivas[pId] = 0;
+
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl border border-gray-100 flex flex-col justify-between transition-all duration-300 group";
+
+                let indicadoresHTML = "";
+                if (fotosArray.length > 1) {
+                    indicadoresHTML = `
+                        <div id="dots-${pId}" class="absolute bottom-2 left-0 right-0 flex justify-center gap-1.5 z-10">
+                            ${fotosArray.map((_, idx) => `
+                                <span class="dot-${pId} w-2 h-2 rounded-full transition-all duration-300 ${idx === indicesImagensAtivas[pId] ? 'bg-magenta w-5' : 'bg-white/70'}"></span>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
+                card.innerHTML = `
+                    <div>
+                        <div class="relative overflow-hidden aspect-[4/3] bg-gray-50 group/img">
+                            <img id="img-slide-${pId}" src="${fotosArray[indicesImagensAtivas[pId]]}" onerror="tratarErroImagem(this)" onclick="abrirZoom(this.src)" alt="${p.nome}" class="img-fade w-full h-full object-cover group-hover:scale-105 cursor-zoom-in">
+                            <span class="absolute top-3 right-3 bg-magenta text-white text-[10px] font-bold px-2.5 py-1 rounded-md uppercase tracking-wider z-10">${p.categoria}</span>
+                            
+                            ${fotosArray.length > 1 ? `
+                                <button onclick="mudarFotoCard(${pId}, -1, true)" class="absolute left-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-magenta text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-20 transition">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </button>
+                                <button onclick="mudarFotoCard(${pId}, 1, true)" class="absolute right-2 top-1/2 -translate-y-1/2 bg-black/30 hover:bg-magenta text-white w-7 h-7 rounded-full flex items-center justify-center text-xs z-20 transition">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </button>
+                                ${indicadoresHTML}
+                            ` : ''}
+                        </div>
+                        <div class="p-4 sm:p-5 space-y-1.5">
+                            <h3 class="text-base font-bold text-gray-900 group-hover:text-magenta transition-colors">${p.nome}</h3>
+                            <p class="text-gray-500 text-xs leading-relaxed line-clamp-3">${p.descricao}</p>
+                        </div>
+                    </div>
+                    <div class="p-4 sm:p-5 pt-0 flex items-center justify-between mt-2">
+                        <div>
+                            <span class="text-[10px] text-gray-400 block">${p.precoBase === 0 ? 'Preço' : 'A partir de'}</span>
+                            <span class="text-base sm:text-lg font-extrabold text-magenta">${p.precoBase === 0 ? 'Sob Consulta' : parseFloat(p.precoBase).toLocaleString('pt-MZ') + ' MZN'}</span>
+                        </div>
+                        <button onclick="abrirModalOpcoes(${p.id})" class="bg-magenta hover:bg-magenta-dark text-white px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl font-semibold text-xs transition duration-300 flex items-center gap-2 shadow-sm">
+                            <i class="fa-solid fa-sliders"></i> Opções
+                        </button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        window.mudarFotoCard = function(id, direcao, interacaoManual = false) {
+            const produto = produtosAginaSabores.find(p => p.id === id);
+            if (!produto) return;
+            const imgElement = document.getElementById(`img-slide-${id}`);
+            if (!imgElement) return;
+
+            const fotos = produto.imagens && produto.imagens.length > 0 ? produto.imagens : [IMG_FALLBACK];
+            let index = indicesImagensAtivas[id] + direcao;
+
+            if (index >= fotos.length) index = 0;
+            if (index < 0) index = fotos.length - 1;
+
+            indicesImagensAtivas[id] = index;
+
+            imgElement.style.opacity = '0.3';
+            setTimeout(() => {
+                imgElement.src = fotos[index];
+                imgElement.style.opacity = '1';
+            }, 150);
+
+            const dots = document.querySelectorAll(`.dot-${id}`);
+            dots.forEach((dot, idx) => {
+                dot.className = `dot-${id} ${idx === index ? 'w-5 h-2 rounded-full transition-all duration-300 bg-magenta' : 'w-2 h-2 rounded-full transition-all duration-300 bg-white/70'}`;
+            });
+
+            if (interacaoManual) iniciarSlideshowAutomatico();
+        };
+
+        function adicionarPromoAoCarrinho(nomePromo, preco, detalhes) {
+            const itemPromo = {
+                idCart: Date.now(),
+                id: 999,
+                nome: `🍲 ${nomePromo}`,
+                detalhes: detalhes,
+                preco: preco,
+                qtd: 1
+            };
+            carrinho.push(itemPromo);
+            atualizarCarrinho();
+            toggleCarrinho(true);
+        }
+
+        function abrirModalOpcoes(idProduto) {
+            const produto = produtosAginaSabores.find(p => p.id === idProduto);
+            if (!produto) return;
+
+            produtoSelecionadoTemp = JSON.parse(JSON.stringify(produto));
+            document.getElementById('modalOpcoesTitulo').innerText = produto.nome;
+            const corpo = document.getElementById('modalOpcoesCorpo');
+            corpo.innerHTML = "";
+
+            if (produto.opcoes && (produto.opcoes.tamanhos || produto.opcoes.recheios)) {
+                const listaOpcoesPreco = produto.opcoes.tamanhos || produto.opcoes.recheios;
+                const tituloGrupo = produto.opcoes.tamanhos ? "Escolha a Opção / Prato:" : "Escolha a Opção / Recheio:";
+                
+                let htmlGrupo = `<div class="space-y-2">
+                    <label class="block text-xs font-bold text-magenta uppercase tracking-wider">${tituloGrupo}</label>
+                    <div class="space-y-2">`;
+                
+                listaOpcoesPreco.forEach((op, idx) => {
+                    const preco = typeof op === 'object' ? op.preco : produto.precoBase;
+                    const nome = typeof op === 'object' ? op.nome : op;
+                    const checked = idx === 0 ? 'checked' : '';
+
+                    htmlGrupo += `
+                        <label class="flex items-center justify-between p-3 border rounded-xl cursor-pointer hover:border-magenta transition bg-white">
+                            <div class="flex items-center gap-2.5">
+                                <input type="radio" name="opcaoPrincipal" value="${nome}" data-preco="${preco}" ${checked} onchange="atualizarPrecoModal()" class="accent-magenta w-4 h-4">
+                                <span class="text-xs sm:text-sm font-semibold text-gray-700">${nome}</span>
+                            </div>
+                            <span class="text-xs sm:text-sm font-bold text-magenta">${preco === 0 ? 'Sob Consulta' : preco.toLocaleString('pt-MZ') + ' MZN'}</span>
+                        </label>
+                    `;
+                });
+                htmlGrupo += `</div></div>`;
+                corpo.innerHTML += htmlGrupo;
+            }
+
+            corpo.innerHTML += `
+                <div class="space-y-2 pt-1">
+                    <label class="block text-xs font-bold text-magenta uppercase tracking-wider">Observações / Detalhes do Pedido:</label>
+                    <textarea id="obsProduto" rows="2" placeholder="Ex: Sem cebola, extra pimenta..." class="w-full p-3 border border-gray-200 rounded-xl text-xs sm:text-sm focus:outline-none focus:border-magenta"></textarea>
+                </div>
+            `;
+
+            atualizarPrecoModal();
+            document.getElementById('modalOpcoes').classList.remove('hidden');
+        }
+
+        function fecharModalOpcoes() {
+            document.getElementById('modalOpcoes').classList.add('hidden');
+        }
+
+        function atualizarPrecoModal() {
+            const radioSelecionado = document.querySelector('input[name="opcaoPrincipal"]:checked');
+            if (radioSelecionado) {
+                precoCalculadoTemp = parseFloat(radioSelecionado.getAttribute('data-preco'));
+            } else {
+                precoCalculadoTemp = produtoSelecionadoTemp.precoBase;
+            }
+            document.getElementById('modalOpcoesPreco').innerText = precoCalculadoTemp === 0 ? 'Sob Consulta' : `${precoCalculadoTemp.toLocaleString('pt-MZ')} MZN`;
+        }
+
+        function confirmarAdicaoCarrinho() {
+            const radioSelecionado = document.querySelector('input[name="opcaoPrincipal"]:checked');
+            const obs = document.getElementById('obsProduto').value.trim();
+
+            let detalhes = [];
+            if (radioSelecionado) detalhes.push(radioSelecionado.value);
+            if (obs) detalhes.push(`Obs: ${obs}`);
+
+            const itemParaCarrinho = {
+                idCart: Date.now(),
+                id: produtoSelecionadoTemp.id,
+                nome: produtoSelecionadoTemp.nome,
+                detalhes: detalhes.join(' | '),
+                preco: precoCalculadoTemp,
+                qtd: 1
+            };
+
+            carrinho.push(itemParaCarrinho);
+            fecharModalOpcoes();
+            atualizarCarrinho();
+            toggleCarrinho(true);
+        }
+
+        function removerItemCarrinho(idCart) {
+            carrinho = carrinho.filter(i => i.idCart !== idCart);
+            atualizarCarrinho();
+        }
+
+        function alterarQuantidade(idCart, delta) {
+            const item = carrinho.find(i => i.idCart === idCart);
+            if (item) {
+                item.qtd += delta;
+                if (item.qtd <= 0) {
+                    removerItemCarrinho(idCart);
+                    return;
+                }
+            }
+            atualizarCarrinho();
+        }
+
+        function atualizarCarrinho() {
+            const container = document.getElementById('itens-carrinho');
+            const headerCount = document.getElementById('cart-count-header');
+            const floatCounts = document.querySelectorAll('#cart-count-float');
+
+            container.innerHTML = "";
+            let totalItens = 0;
+
+            if (carrinho.length === 0) {
+                container.innerHTML = `<div class="text-center py-12 text-gray-400">
+                    <i class="fa-solid fa-basket-shopping text-4xl mb-3 block text-magenta/40"></i>
+                    <p class="text-xs sm:text-sm">Seu carrinho está vazio.</p>
+                </div>`;
+            } else {
+                carrinho.forEach(item => {
+                    const subtotal = item.preco * item.qtd;
+                    totalItens += item.qtd;
+
+                    const itemDiv = document.createElement('div');
+                    itemDiv.className = "bg-gray-50 p-3 rounded-xl border border-gray-100 space-y-2 relative group";
+                    itemDiv.innerHTML = `
+                        <div class="flex items-start justify-between pr-6">
+                            <div>
+                                <h4 class="font-bold text-gray-800 text-xs sm:text-sm">${item.nome}</h4>
+                                <p class="text-[10px] sm:text-xs text-magenta font-medium leading-snug">${item.detalhes}</p>
+                            </div>
+                            <span class="font-bold text-magenta text-xs">${subtotal === 0 ? 'Sob Consulta' : subtotal.toLocaleString('pt-MZ') + ' MZN'}</span>
+                        </div>
+                        
+                        <button onclick="removerItemCarrinho(${item.idCart})" title="Remover item" class="absolute top-2.5 right-2.5 text-red-400 hover:text-red-600 p-1 text-xs">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+
+                        <div class="flex items-center justify-between border-t border-gray-200/60 pt-2">
+                            <span class="text-[10px] text-gray-400">${item.preco === 0 ? 'Sob Consulta' : item.preco.toLocaleString('pt-MZ') + ' MZN un.'}</span>
+                            <div class="flex items-center border border-gray-200 rounded-lg bg-white overflow-hidden">
+                                <button onclick="alterarQuantidade(${item.idCart}, -1)" class="px-2 py-0.5 text-gray-600 hover:bg-gray-100 text-xs font-bold">-</button>
+                                <span class="px-2 text-xs font-bold text-gray-800">${item.qtd}</span>
+                                <button onclick="alterarQuantidade(${item.idCart}, 1)" class="px-2 py-0.5 text-gray-600 hover:bg-gray-100 text-xs font-bold">+</button>
+                            </div>
+                        </div>
+                    `;
+                    container.appendChild(itemDiv);
+                });
+            }
+
+            if (headerCount) headerCount.innerText = totalItens;
+            floatCounts.forEach(fc => fc.innerText = totalItens);
+            atualizarTotalCarrinho();
+        }
+
+        function atualizarTotalCarrinho() {
+            let subtotal = 0;
+            carrinho.forEach(item => subtotal += (item.preco * item.qtd));
+
+            const opcaoEntrega = document.querySelector('input[name="opcaoEntrega"]:checked')?.value || 'retirada';
+            const taxaDelivery = opcaoEntrega === 'delivery' ? 100 : 0;
+            const totalFinal = subtotal + taxaDelivery;
+
+            document.getElementById('subtotal-carrinho').innerText = `${subtotal.toLocaleString('pt-MZ')} MZN`;
+            document.getElementById('taxa-delivery-valor').innerText = `${taxaDelivery.toLocaleString('pt-MZ')} MZN`;
+            document.getElementById('total-carrinho').innerText = `${totalFinal.toLocaleString('pt-MZ')} MZN`;
+        }
+
+        function toggleCarrinho(forcarAbertura = false) {
+            const modal = document.getElementById('carrinho-modal');
+            if (forcarAbertura || modal.classList.contains('hidden')) {
+                modal.classList.remove('hidden');
+            } else {
+                modal.classList.add('hidden');
+            }
+        }
+
+        // >>> Ajuste este endereço para o do seu servidor quando publicar online <<<
+        const API_URL_ENCOMENDAS = "http://localhost:3000/api/encomendas";
+
+        async function enviarPedidoWhatsApp() {
+            if (carrinho.length === 0) {
+                alert("O seu carrinho está vazio.");
+                return;
+            }
+
+            const nomeCliente = document.getElementById('input-nome-cliente')?.value.trim();
+            const telefoneCliente = document.getElementById('input-telefone-cliente')?.value.trim();
+
+            if (!nomeCliente || !telefoneCliente) {
+                alert("Por favor, preencha o seu nome e número de telefone para finalizar o pedido.");
+                return;
+            }
+
+            const telefoneLoja = "258845548352";
+            const opcaoEntrega = document.querySelector('input[name="opcaoEntrega"]:checked')?.value || 'retirada';
+            const taxaDelivery = opcaoEntrega === 'delivery' ? 100 : 0;
+
+            let subtotal = 0;
+            carrinho.forEach(item => subtotal += (item.preco * item.qtd));
+            const totalFinal = subtotal + taxaDelivery;
+
+            // Regista a encomenda no painel administrativo (para acompanhamento).
+            // Se o servidor não estiver disponível, o pedido segue à mesma pelo
+            // WhatsApp — apenas não ficará visível no painel.
+            let numeroEncomenda = null;
+            try {
+                const resposta = await fetch(API_URL_ENCOMENDAS, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        nome: nomeCliente,
+                        telefone: telefoneCliente,
+                        formaEntrega: opcaoEntrega,
+                        taxaEntrega: taxaDelivery,
+                        subtotal: subtotal,
+                        total: totalFinal,
+                        itens: carrinho.map(item => ({
+                            nome: item.nome,
+                            detalhes: item.detalhes || '',
+                            preco: item.preco,
+                            qtd: item.qtd
+                        }))
+                    })
+                });
+                if (resposta.ok) {
+                    const dados = await resposta.json();
+                    numeroEncomenda = dados.numero;
+                }
+            } catch (err) {
+                console.warn("Não foi possível registar a encomenda no painel (servidor indisponível):", err);
+            }
+
+            let mensagem = "👋 Olá, Fino Sabor! Gostaria de realizar o seguinte pedido:\n\n";
+
+            if (numeroEncomenda) {
+                mensagem += `🧾 *Encomenda:* #${numeroEncomenda}\n`;
+            }
+            mensagem += `👤 *Nome:* ${nomeCliente}\n`;
+            mensagem += `📱 *Telefone:* ${telefoneCliente}\n\n`;
+
+            carrinho.forEach(item => {
+                const sub = item.preco * item.qtd;
+                mensagem += `• *${item.nome}* (${item.detalhes})\n  *Qtd:* ${item.qtd}x | *Subtotal:* ${sub === 0 ? 'Sob Consulta' : sub.toLocaleString('pt-MZ') + ' MZN'}\n\n`;
+            });
+
+            mensagem += `─────────────\n`;
+            mensagem += `💵 *Subtotal:* ${subtotal.toLocaleString('pt-MZ')} MZN\n`;
+            
+            if (opcaoEntrega === 'delivery') {
+                mensagem += `🛵 *Entrega:* Delivery (+100 MZN Passagem)\n`;
+            } else {
+                mensagem += `🏪 *Entrega:* Retirada no Local\n`;
+            }
+
+            mensagem += `💰 *Total a Pagar:* ${totalFinal.toLocaleString('pt-MZ')} MZN\n\n`;
+            mensagem += `💳 *Método de Pagamento:* M-Pesa\n`;
+            mensagem += `• *Número:* 845548352\n`;
+            mensagem += `• *Nome:* Nissia\n\n`;
+            mensagem += `Por favor, confirmem a disponibilidade do pedido. Obrigado!`;
+
+            window.open(`https://wa.me/${telefoneLoja}?text=${encodeURIComponent(mensagem)}`, '_blank');
+        }
+
+        function calcularEvento(e) {
+            e.preventDefault();
+            const pessoas = parseInt(document.getElementById('calcPessoas').value);
+            const tipo = document.getElementById('calcTipo').value;
+
+            if (!pessoas || pessoas < 1) return;
+
+            const salgadosDuzias = Math.ceil((pessoas * 8) / 12);
+            let boloSugerido = "Forma F18 (1.350 MZN)";
+
+            if (pessoas > 12 && pessoas <= 20) boloSugerido = "Forma F20 (1.500 MZN)";
+            else if (pessoas > 20 && pessoas <= 30) boloSugerido = "Forma F22 (2.500 MZN)";
+            else if (pessoas > 30 && pessoas <= 40) boloSugerido = "Forma F26 (3.000 MZN)";
+            else if (pessoas > 40) boloSugerido = "Forma F30 (3.500 MZN)";
+
+            document.getElementById('resSalgados').innerText = `${salgadosDuzias} dúzias`;
+            document.getElementById('resBolo').innerText = boloSugerido;
+
+            ultimoCalculoEvento = { pessoas, tipo, salgadosDuzias, boloSugerido };
+            document.getElementById('resultadoCalculadora').classList.remove('hidden');
+        }
+
+        function enviarCalculoWhatsApp() {
+            if (!ultimoCalculoEvento) return;
+            const telefone = "258845548352";
+            
+            let msg = `👋 Olá, Fino Sabor!\n\nUsei a calculadora no site para o meu evento e gostaria de um orçamento:\n\n`;
+            msg += `👥 *Nº de Convidados:* ${ultimoCalculoEvento.pessoas}\n`;
+            msg += `🎉 *Tipo de Evento:* ${ultimoCalculoEvento.tipo}\n\n`;
+            msg += `📌 *Estimativa Gerada:*\n`;
+            msg += `• *Salgados:* ${ultimoCalculoEvento.salgadosDuzias} dúzias\n`;
+            msg += `• *Bolo:* ${ultimoCalculoEvento.boloSugerido}\n\n`;
+            msg += `💳 *Pagamento via M-Pesa:* 845548352 (Nissia)\n\n`;
+            msg += `Gostaria de verificar disponibilidade!`;
+
+            window.open(`https://wa.me/${telefone}?text=${encodeURIComponent(msg)}`, '_blank');
+        }
+
+        function filtrarCategoria(categoria, btnElement) {
+            categoriaAtual = categoria;
+            document.getElementById('campo-busca').value = "";
+            document.querySelectorAll('.btn-cat').forEach(b => {
+                b.className = "btn-cat shrink-0 px-4 py-2 rounded-xl font-medium text-gray-500 hover:text-magenta text-xs sm:text-sm transition";
+            });
+            if(btnElement) {
+                btnElement.className = "btn-cat shrink-0 px-4 py-2 rounded-xl font-bold bg-magenta text-white text-xs sm:text-sm transition shadow-sm";
+            }
+            filtrarProdutos();
+        }
+
+        function filtrarProdutos() {
+            const termo = document.getElementById('campo-busca').value.toLowerCase().trim();
+            let dados = produtosAginaSabores;
+
+            if (categoriaAtual !== 'todos') {
+                dados = dados.filter(p => p.categoria.toLowerCase() === categoriaAtual.toLowerCase());
+            }
+
+            if (termo !== "") {
+                dados = dados.filter(p => 
+                    p.nome.toLowerCase().includes(termo) || 
+                    p.descricao.toLowerCase().includes(termo)
+                );
+            }
+
+            renderizarProdutos(dados);
+        }
+    </script>
+</body>
+</html>

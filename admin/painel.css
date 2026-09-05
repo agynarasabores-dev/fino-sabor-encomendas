@@ -1,0 +1,238 @@
+/* ============================================================
+   PAINEL FINO SABOR — estilos (Tailwind trata do resto)
+   ============================================================ */
+
+/* Utilitário para texto só para leitores de ecrã */
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+/* Esconde a barra de scroll dos filtros (mas continua a deslizar) */
+.scroll-clean::-webkit-scrollbar { display: none; }
+.scroll-clean { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Foco visível e consistente em todos os elementos interativos
+   (importante para acessibilidade / navegação por teclado) */
+button:focus-visible,
+input:focus-visible,
+a:focus-visible {
+    outline: 2px solid #e20074;
+    outline-offset: 2px;
+}
+
+/* ------------------- Badges de estado ------------------- */
+.badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    padding: 0.3rem 0.7rem;
+    border-radius: 999px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+.badge-aguardando_pagamento { background: #fef3c7; color: #92400e; }
+.badge-paga { background: #dbeafe; color: #1e40af; }
+.badge-em_preparacao { background: #fce7f3; color: #9d174d; }
+.badge-pronta { background: #dcfce7; color: #166534; }
+.badge-concluida { background: #e5e7eb; color: #374151; }
+
+.badge-pendente { background: #fee2e2; color: #991b1b; }
+.badge-confirmado { background: #dcfce7; color: #166534; }
+
+/* ------------------- Cartão de encomenda ------------------- */
+.card-encomenda {
+    transition: box-shadow 0.2s ease;
+}
+
+.card-encomenda:hover {
+    box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+}
+
+/* Botões de mudar estado — toque grande (mín. 44px) para telemóvel */
+.btn-estado {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 0.6rem 0.85rem;
+    min-height: 40px;
+    border-radius: 0.6rem;
+    border: 1px solid #e5e7eb;
+    background: white;
+    color: #4b5563;
+    cursor: pointer;
+    transition: all 0.15s ease;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    flex: 1 1 auto;
+}
+
+.btn-estado:hover {
+    border-color: #e20074;
+    color: #e20074;
+}
+
+.btn-estado.actual {
+    background: #e20074;
+    border-color: #e20074;
+    color: white;
+}
+
+/* Indicador de ligação em tempo real (bolinha no sino) */
+.ponto-ok { background: #22c55e !important; box-shadow: 0 0 0 2px white; }
+.ponto-erro { background: #ef4444 !important; box-shadow: 0 0 0 2px white; }
+
+/* ------------------- Toast de nova encomenda ------------------- */
+#toast-nova-encomenda {
+    position: fixed;
+    top: 12px;
+    right: 12px;
+    left: 12px;
+    max-width: 380px;
+    margin-left: auto;
+    z-index: 9999;
+    background: white;
+    border-left: 5px solid #22c55e;
+    border-radius: 12px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+    padding: 14px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    animation: toast-entrar 0.25s ease-out;
+    cursor: pointer;
+    padding-top: max(14px, env(safe-area-inset-top));
+}
+
+@keyframes toast-entrar {
+    from { transform: translateY(-12px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+/* IMPORTANTE: a regra acima usa "display: flex" no próprio #id, que tem
+   mais força que a classe .hidden do Tailwind — por isso, sem esta regra
+   extra, o aviso ficava sempre visível (vazio) mesmo com class="hidden".
+   Esta regra garante que, quando escondido, fica mesmo escondido. */
+#toast-nova-encomenda.hidden {
+    display: none !important;
+}
+
+/* Realce temporário no cartão da encomenda nova */
+.card-nova-encomenda {
+    animation: destaque-pulsar 1.6s ease-in-out 2;
+    border-color: #22c55e !important;
+}
+
+@keyframes destaque-pulsar {
+    0%, 100% { box-shadow: 0 0 0 rgba(34,197,94,0); }
+    50% { box-shadow: 0 0 0 6px rgba(34,197,94,0.15); }
+}
+
+/* ------------------- Central de Notificações ------------------- */
+#painel-notificacoes {
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+    border: 1px solid #f0f0f0;
+    z-index: 60;
+    overflow: hidden;
+}
+
+/* Desktop/tablet: dropdown ancorado ao sino */
+@media (min-width: 640px) {
+    #painel-notificacoes {
+        position: absolute;
+        top: calc(100% + 8px);
+        right: 0;
+        width: 340px;
+    }
+}
+
+/* Telemóvel: painel ocupa a largura toda, como uma "folha" no topo */
+@media (max-width: 639px) {
+    #painel-notificacoes {
+        position: fixed;
+        top: 8px;
+        left: 8px;
+        right: 8px;
+        max-height: 85vh;
+        padding-top: env(safe-area-inset-top);
+    }
+}
+
+.item-notificacao {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px 16px;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.item-notificacao:last-child { border-bottom: none; }
+
+.item-notificacao.nao-lida {
+    background: #fff7fb;
+}
+
+.btn-eliminar-notificacao {
+    color: #d1d5db;
+    background: none;
+    border: none;
+    width: 30px;
+    height: 30px;
+    border-radius: 8px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.btn-eliminar-notificacao:hover {
+    color: #ef4444;
+    background: #fef2f2;
+}
+
+/* ------------------- Interruptor (som on/off) ------------------- */
+.interruptor {
+    width: 42px;
+    height: 24px;
+    border-radius: 999px;
+    background: #d1d5db;
+    position: relative;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    flex-shrink: 0;
+}
+
+.interruptor[aria-checked="true"] {
+    background: #22c55e;
+}
+
+.interruptor-bola {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+    transition: transform 0.2s ease;
+}
+
+.interruptor[aria-checked="true"] .interruptor-bola {
+    transform: translateX(18px);
+}
+
+/* ------------------- Responsividade geral extra ------------------- */
+@media (max-width: 639px) {
+    .card-encomenda { padding: 14px !important; }
+    #filtros-estado > button { flex: 0 0 auto; }
+}
